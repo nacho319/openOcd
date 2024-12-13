@@ -22,6 +22,11 @@
 #include <sys/ioctl.h>
 #endif
 
+/* cmi 13-Dec-24 */
+#if (IS_DARWIN == 1)
+#define DARWIN_LIST_HEAD_CONFLICT
+#endif
+
 #include <helper/list.h>
 #include <helper/time_support.h>
 #include <target/target.h>

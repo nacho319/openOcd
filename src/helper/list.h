@@ -46,8 +46,15 @@ struct list_head {
 
 #define LIST_HEAD_INIT(name) { &(name), &(name) }
 
+/* cmi 13-Dec-24 */
+#ifdef DARWIN_LIST_HEAD_CONFLICT
+#define OCD_LIST_HEAD(name) \
+	struct list_head name = LIST_HEAD_INIT(name)
+#else
 #define LIST_HEAD(name) \
 	struct list_head name = LIST_HEAD_INIT(name)
+#endif
+	
 
 static inline void
 INIT_LIST_HEAD(struct list_head *list)
